@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="maroon_primary">#7B1E3A</color>
+    <color name="maroon_dark">#5C1028</color>
+    <color name="maroon_light">#A63A5A</color>
+    <color name="cream_bg">#FFF8F3</color>
+    <color name="soft_pink">#FBE4E9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black_soft">#2B2B2B</color>
+    <color name="gray_text">#666666</color>
+    <color name="gray_line">#DDDDDD</color>
+</resources>
