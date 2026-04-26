@@ -76,7 +76,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aplikasi ini dibuat untuk memenuhi tugas UAS Pemrograman Seluler dengan tema katalog makanan khas Batak."
+                    android:text="Aplikasi katalog makanan khas Batak yang memudahkan pengguna dalam melihat dan mengelola data makanan."
                     android:textColor="@color/gray_text"
                     android:textSize="15sp"
                     android:lineSpacingExtra="4dp" />
