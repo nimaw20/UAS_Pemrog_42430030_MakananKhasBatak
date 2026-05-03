@@ -1,4 +1,7 @@
 package com.example.katalogmakananbatak.model
 
-class Makanan {
-}
+data class Makanan(
+    val nama: String,
+    val deskripsi: String,
+    val gambar: Int
+)

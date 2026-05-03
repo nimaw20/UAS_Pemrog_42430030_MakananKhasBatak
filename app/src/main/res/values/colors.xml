@@ -2,10 +2,14 @@
     <color name="maroon_primary">#7B1E2B</color>
     <color name="maroon_dark">#5D1420</color>
     <color name="screen_bg">#F7F2F2</color>
+    <color name="cream_bg">#F7F2F2</color>
     <color name="white">#FFFFFF</color>
     <color name="text_primary">#242424</color>
     <color name="text_secondary">#8D8D8D</color>
     <color name="price_color">#D14B4B</color>
     <color name="star_color">#E3B44B</color>
     <color name="soft_circle">#EFE8E8</color>
+    <color name="maroon_light">#A64B5A</color>
+    <color name="black_soft">#333333</color>
+    <color name="gray_text">#6F6F6F</color>
 </resources>
