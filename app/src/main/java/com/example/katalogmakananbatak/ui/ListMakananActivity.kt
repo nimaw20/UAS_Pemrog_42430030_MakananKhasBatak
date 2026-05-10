@@ -1,91 +1,86 @@
 package com.example.katalogmakananbatak.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.katalogmakananbatak.R
 import com.example.katalogmakananbatak.model.Makanan
 
 class ListMakananActivity : AppCompatActivity() {
 
+    private val TAG = "42430030"
     private lateinit var daftarMakanan: ArrayList<Makanan>
+    private lateinit var adapter: MakananAdapter
+    private lateinit var etSearch: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_makanan)
 
-        daftarMakanan = arrayListOf(
-            Makanan(
-                "Arsik",
-                "Hidangan khas Batak yang identik dengan ikan mas berbumbu kuning, memakai rempah seperti andaliman dan asam patikala.",
-                R.drawable.arsik
-            ),
-            Makanan(
-                "Ayam Napinadar",
-                "Masakan khas Batak dengan bumbu rempah kuat, terutama andaliman, bercita rasa gurih pedas.",
-                R.drawable.ayam_napinadar
-            ),
-            Makanan(
-                "Babi Panggang Karo",
-                "Hidangan berupa daging babi panggang dengan kulit renyah, biasanya disajikan dengan sambal khas dan pelengkap daun singkong.",
-                R.drawable.babi_panggang_karo
-            ),
-            Makanan(
-                "Daun Ubi Tumbuk",
-                "Olahan daun singkong yang ditumbuk, dikenal dalam kuliner Batak dan Sumatera Utara, serta umum dimasak dengan kuah santan berbumbu.",
-                R.drawable.daun_ubi
-            ),
-            Makanan(
-                "Ikan Tombur",
-                "Masakan khas Batak berbahan ikan yang disajikan dengan bumbu khas seperti andaliman; dikenal juga sebagai na tinombur.",
-                R.drawable.ikan_tombur
-            ),
-            Makanan(
-                "Mie Gomak",
-                "Hidangan khas Batak dari Sumatera Utara yang umum disajikan sebagai mie kuah atau goreng dengan bumbu rempah khas.",
-                R.drawable.mie_gomak
-            ),
-            Makanan(
-                "Saksang",
-                "Makanan khas Batak dari daging yang dimasak dengan rempah dan andaliman.",
-                R.drawable.saksang
-            )
-        )
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Daftar Makanan Batak"
 
-        Log.d("DATA_ARRAY", "Jumlah data makanan: ${daftarMakanan.size}")
+        // Inisialisasi Data
+        initData()
 
-        val hasilCari = cariMakanan("ikan")
-        Log.d("SEARCHING", "Hasil cari 'ikan':")
-        for (makanan in hasilCari) {
-            Log.d("SEARCHING", makanan.nama)
-        }
+        // Setup RecyclerView
+        val rvMakanan: RecyclerView = findViewById(R.id.rvMakanan)
+        rvMakanan.layoutManager = LinearLayoutManager(this)
+        adapter = MakananAdapter(daftarMakanan)
+        rvMakanan.adapter = adapter
 
-        val urutAZ = ArrayList(daftarMakanan)
-        urutAZ.sortBy { it.nama }
-        Log.d("SORTING_AZ", "Urut A-Z:")
-        for (makanan in urutAZ) {
-            Log.d("SORTING_AZ", makanan.nama)
-        }
-
-        val urutZA = ArrayList(daftarMakanan)
-        urutZA.sortByDescending { it.nama }
-        Log.d("SORTING_ZA", "Urut Z-A:")
-        for (makanan in urutZA) {
-            Log.d("SORTING_ZA", makanan.nama)
-        }
+        // Setup Search Feature (Linear Search)
+        etSearch = findViewById(R.id.etSearch)
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val query = s.toString()
+                linearSearch(query)
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
 
-    private fun cariMakanan(keyword: String): ArrayList<Makanan> {
-        val hasil = arrayListOf<Makanan>()
+    private fun initData() {
+        daftarMakanan = arrayListOf(
+            Makanan("Arsik", "Ikan mas berbumbu kuning dengan andaliman.", R.drawable.arsik),
+            Makanan("Ayam Napinadar", "Ayam bakar bumbu andaliman dan darah ayam.", R.drawable.ayam_napinadar),
+            Makanan("Babi Panggang Karo", "Daging babi panggang renyah khas Karo.", R.drawable.babi_panggang_karo),
+            Makanan("Daun Ubi Tumbuk", "Sayur daun singkong tumbuk bersantan.", R.drawable.daun_ubi),
+            Makanan("Ikan Tombur", "Ikan bakar/rebus dengan sambal andaliman.", R.drawable.ikan_tombur),
+            Makanan("Mie Gomak", "Spaghetti ala Batak dengan bumbu kacang/santan.", R.drawable.mie_gomak),
+            Makanan("Saksang", "Olahan daging berbumbu rempah dan andaliman.", R.drawable.saksang)
+        )
+    }
 
-        for (makanan in daftarMakanan) {
-            if (makanan.nama.contains(keyword, ignoreCase = true) ||
-                makanan.deskripsi.contains(keyword, ignoreCase = true)
-            ) {
-                hasil.add(makanan)
+    /**
+     * Implementasi Algoritma Linear Search
+     * Mencari data satu per satu dari awal hingga akhir list
+     */
+    private fun linearSearch(query: String) {
+        Log.d(TAG, "Melakukan pencarian Linear Search untuk: $query")
+        
+        val hasilPencarian = ArrayList<Makanan>()
+
+        for (item in daftarMakanan) {
+            // Memeriksa apakah nama atau deskripsi mengandung kata kunci (Case Insensitive)
+            if (item.nama.contains(query, ignoreCase = true) || 
+                item.deskripsi.contains(query, ignoreCase = true)) {
+                hasilPencarian.add(item)
             }
         }
 
-        return hasil
+        Log.d(TAG, "Linear Search selesai. Ditemukan ${hasilPencarian.size} hasil.")
+        adapter.updateData(hasilPencarian)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

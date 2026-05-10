@@ -1,313 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/screen_bg">
+    android:background="@color/cream_bg"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:text="Katalog Makanan Batak"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/maroon_primary"
+        android:gravity="center"
+        android:padding="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Makanan Khas Batak"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/maroon_primary"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:layout_marginBottom="16dp" />
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Cari makanan..."
+        android:padding="12dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp" />
 
-        <!-- BABI PANGGANG KARO -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMakanan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/babi_panggang_karo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Babi Panggang Karo"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Hidangan berupa daging babi panggang dengan kulit renyah, biasanya disajikan dengan sambal khas dan pelengkap daun singkong."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- AYAM NAPINADAR -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ayam_napinadar" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Ayam Napinadar"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Masakan khas Batak dengan bumbu rempah kuat, terutama andaliman, bercita rasa gurih pedas, dan kerap dikaitkan dengan sajian adat."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- SAKSANG -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/saksang" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Saksang"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Makanan khas Batak dari daging yang dimasak dengan rempah dan andaliman. Saksang dikenal memakai darah sebagai bagian olahannya."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- MIE GOMAK -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/mie_gomak" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Mie Gomak"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Hidangan khas Batak dari Sumatera Utara yang umum disajikan sebagai mie kuah atau goreng dengan bumbu rempah khas."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- ARSIK -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/arsik" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Arsik"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Hidangan khas Batak yang identik dengan ikan mas berbumbu kuning, memakai rempah seperti andaliman dan asam patikala, serta punya nilai budaya dalam tradisi Batak."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- DAUN UBI TUMBUK -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/daun_ubi" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Daun Ubi Tumbuk"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Olahan daun singkong yang ditumbuk, dikenal dalam kuliner Batak dan Sumatera Utara, serta umum dimasak dengan kuah santan berbumbu."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- IKAN TOMBUR -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ikan_tombur" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Ikan Tombur"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Masakan khas Batak berbahan ikan yang disajikan dengan bumbu khas seperti andaliman; dikenal juga sebagai na tinombur."
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

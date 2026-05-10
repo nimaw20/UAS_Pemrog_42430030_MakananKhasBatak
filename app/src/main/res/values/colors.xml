@@ -4,6 +4,7 @@
     <color name="screen_bg">#F7F2F2</color>
     <color name="cream_bg">#F7F2F2</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="text_primary">#242424</color>
     <color name="text_secondary">#8D8D8D</color>
     <color name="price_color">#D14B4B</color>
