@@ -1,6 +1,6 @@
-# UAS Pemrograman Mobile - Katalog Makanan Batak
+# UAS Pemrograman Seluler - Katalog Makanan Batak
 
-**Nama Lengkap:** Nima M
+**Nama Lengkap:** Yunima Dioranda Manik
 **NIM:** 42430030
 
 ## Topik Aplikasi
