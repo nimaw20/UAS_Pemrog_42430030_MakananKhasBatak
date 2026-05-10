@@ -10,32 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
+        <!-- Header Card - Centered -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
             app:cardBackgroundColor="@color/maroon_primary">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tvDetailNama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Arsik"
+                    android:text="Tentang Aplikasi"
                     android:textColor="@color/white"
-                    android:textSize="28sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Katalog Makanan Batak"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Info Card - Centered -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,55 +59,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Informasi Makanan"
-                    android:textColor="@color/maroon_primary"
-                    android:textSize="18sp"
+                    android:text="Nama: Nima M"
+                    android:textColor="@color/black_soft"
+                    android:textSize="16sp"
                     android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NIM: 231234567"
+                    android:textColor="@color/black_soft"
+                    android:textSize="16sp"
                     android:layout_marginBottom="12dp" />
 
                 <TextView
-                    android:id="@+id/tvDetailAsal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Asal: Tapanuli"
-                    android:textColor="@color/black_soft"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp" />
-
-                <TextView
-                    android:id="@+id/tvDetailHarga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Harga: Rp25.000"
-                    android:textColor="@color/black_soft"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="8dp" />
-
-                <TextView
-                    android:id="@+id/tvDetailDeskripsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Deskripsi makanan akan tampil di sini."
+                    android:text="Aplikasi katalog makanan khas Batak yang memudahkan pengguna dalam melihat dan mengelola data makanan."
                     android:textColor="@color/gray_text"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:lineSpacingExtra="4dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnKembali"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Kembali"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/maroon_dark"
-            android:layout_marginTop="20dp" />
 
     </LinearLayout>
 </ScrollView>

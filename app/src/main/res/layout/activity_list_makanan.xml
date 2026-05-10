@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cream_bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,18 +22,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="12dp"
         android:hint="Cari makanan..."
         android:padding="12dp"
         android:background="@android:drawable/editbox_background"
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="8dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Urutkan Abjad:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/maroon_dark" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSortAZ"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:text="A-Z"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_button_sort"
+            android:layout_marginEnd="8dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSortZA"
+            android:layout_width="60dp"
+            android:layout_height="36dp"
+            android:text="Z-A"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_button_sort" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DDDDDD"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMakanan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
+        android:paddingHorizontal="8dp"
         android:clipToPadding="false" />
 
 </LinearLayout>

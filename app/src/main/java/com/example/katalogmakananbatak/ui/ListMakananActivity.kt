@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ class ListMakananActivity : AppCompatActivity() {
 
     private val TAG = "42430030"
     private lateinit var daftarMakanan: ArrayList<Makanan>
+    private lateinit var currentList: ArrayList<Makanan>
     private lateinit var adapter: MakananAdapter
     private lateinit var etSearch: EditText
 
@@ -27,11 +29,12 @@ class ListMakananActivity : AppCompatActivity() {
 
         // Inisialisasi Data
         initData()
+        currentList = ArrayList(daftarMakanan)
 
         // Setup RecyclerView
         val rvMakanan: RecyclerView = findViewById(R.id.rvMakanan)
         rvMakanan.layoutManager = LinearLayoutManager(this)
-        adapter = MakananAdapter(daftarMakanan)
+        adapter = MakananAdapter(currentList)
         rvMakanan.adapter = adapter
 
         // Setup Search Feature (Linear Search)
@@ -44,6 +47,18 @@ class ListMakananActivity : AppCompatActivity() {
             }
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        // Setup Sorting Features (Bubble Sort)
+        val btnSortAZ: Button = findViewById(R.id.btnSortAZ)
+        val btnSortZA: Button = findViewById(R.id.btnSortZA)
+
+        btnSortAZ.setOnClickListener {
+            bubbleSort(true)
+        }
+
+        btnSortZA.setOnClickListener {
+            bubbleSort(false)
+        }
     }
 
     private fun initData() {
@@ -60,23 +75,54 @@ class ListMakananActivity : AppCompatActivity() {
 
     /**
      * Implementasi Algoritma Linear Search
-     * Mencari data satu per satu dari awal hingga akhir list
      */
     private fun linearSearch(query: String) {
         Log.d(TAG, "Melakukan pencarian Linear Search untuk: $query")
         
-        val hasilPencarian = ArrayList<Makanan>()
-
-        for (item in daftarMakanan) {
-            // Memeriksa apakah nama atau deskripsi mengandung kata kunci (Case Insensitive)
-            if (item.nama.contains(query, ignoreCase = true) || 
-                item.deskripsi.contains(query, ignoreCase = true)) {
-                hasilPencarian.add(item)
+        currentList.clear()
+        if (query.isEmpty()) {
+            currentList.addAll(daftarMakanan)
+        } else {
+            for (item in daftarMakanan) {
+                if (item.nama.contains(query, ignoreCase = true) || 
+                    item.deskripsi.contains(query, ignoreCase = true)) {
+                    currentList.add(item)
+                }
             }
         }
 
-        Log.d(TAG, "Linear Search selesai. Ditemukan ${hasilPencarian.size} hasil.")
-        adapter.updateData(hasilPencarian)
+        Log.d(TAG, "Linear Search selesai. Ditemukan ${currentList.size} hasil.")
+        adapter.updateData(currentList)
+    }
+
+    /**
+     * Implementasi Algoritma Bubble Sort
+     * @param ascending true untuk A-Z, false untuk Z-A
+     */
+    private fun bubbleSort(ascending: Boolean) {
+        Log.d(TAG, "Melakukan Bubble Sort - Ascending: $ascending")
+        val n = currentList.size
+        for (i in 0 until n - 1) {
+            for (j in 0 until n - i - 1) {
+                val compare = currentList[j].nama.compareTo(currentList[j + 1].nama, ignoreCase = true)
+                
+                val shouldSwap = if (ascending) {
+                    compare > 0
+                } else {
+                    compare < 0
+                }
+
+                if (shouldSwap) {
+                    // Swap elements
+                    val temp = currentList[j]
+                    currentList[j] = currentList[j + 1]
+                    currentList[j + 1] = temp
+                }
+            }
+        }
+        
+        Log.d(TAG, "Bubble Sort selesai.")
+        adapter.notifyDataSetChanged()
     }
 
     override fun onSupportNavigateUp(): Boolean {

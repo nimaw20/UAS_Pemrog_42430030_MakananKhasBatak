@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@color/cream_bg"
-    android:padding="16dp">
+    android:fitsSystemWindows="true"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
 
-    <!-- Bagian kiri -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Katalog Makanan Batak"
+        android:textColor="@color/maroon_primary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"
+        android:gravity="center" />
+
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingEnd="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Daftar Makanan Khas Batak"
-            android:textColor="@color/maroon_primary"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="12dp" />
+        android:gravity="center_horizontal">
 
         <EditText
             android:id="@+id/etSearch"
@@ -30,62 +31,59 @@
             android:layout_height="wrap_content"
             android:hint="Cari makanan..."
             android:padding="12dp"
-            android:backgroundTint="@color/maroon_primary"
+            android:background="@android:drawable/editbox_background"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="8dp"
             android:layout_marginBottom="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginBottom="12dp">
 
-            <Button
-                android:id="@+id/btnCari"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cari"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/maroon_primary"
-                android:layout_marginBottom="8dp" />
+                android:text="Urutkan Abjad: "
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/maroon_dark"
+                android:layout_marginEnd="16dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSortAZ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="36dp"
                 android:text="A-Z"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/maroon_light"
-                android:layout_marginBottom="8dp" />
+                android:background="@drawable/bg_button_sort"
+                android:layout_marginEnd="8dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSortZA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="36dp"
                 android:text="Z-A"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/maroon_dark" />
+                android:background="@drawable/bg_button_sort" />
         </LinearLayout>
-
     </LinearLayout>
 
-    <!-- Bagian kanan -->
-    <LinearLayout
-        android:layout_width="0dp"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DDDDDD"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMakanan"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:orientation="vertical"
-        android:paddingStart="10dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMakanan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="8dp" />
-
-    </LinearLayout>
+        android:clipToPadding="false"
+        android:padding="4dp" />
 
 </LinearLayout>
